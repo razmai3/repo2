@@ -7,13 +7,21 @@ RUN set -ex; \
       bash \
       fluxbox \
       git \
+      firefox-esr \
       net-tools \
+      unzip \
+      wget \
+      tar \
       novnc \
       socat \
       supervisor \
       x11vnc \
       xterm \
       xvfb
+#setup jupyter
+RUN sudo apt-get install -y python3-pip
+RUN pip3 install --upgrade pip
+RUN pip3 install jupyter
 
 # Setup demo environment variables
 ENV HOME=/root \
