@@ -16,12 +16,10 @@ RUN set -ex; \
       socat \
       supervisor \
       x11vnc \
+      python3-pip \
       xterm \
       xvfb
-#setup jupyter
-RUN sudo apt-get install -y python3-pip
-RUN pip3 install --upgrade pip
-RUN pip3 install jupyter
+      
 
 # Setup demo environment variables
 ENV HOME=/root \
@@ -35,5 +33,7 @@ ENV HOME=/root \
     RUN_XTERM=yes \
     RUN_FLUXBOX=yes
 COPY . /app
+RUN pip3 install --upgrade pip
+RUN pip3 install jupyter
 RUN chmod +x /app/conf.d/websockify.sh
 CMD ["/app/entrypoint.sh"]
